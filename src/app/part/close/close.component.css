@@ -1,0 +1,11 @@
+:host {
+    position: absolute;
+    top: 0;
+    right: -1rem;
+    cursor: pointer;
+    transition: .3s;
+}
+
+:host:hover {
+    transform: scale(1.05);
+}

@@ -1,0 +1,22 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 440px;
+    width: 100%;
+    margin: 0 auto;
+    gap: 2.25rem;
+}
+
+.level-btn {
+    margin-top: .75rem;
+    width: 100%;
+    padding: 0.2rem;
+    font-size: 1.25rem;
+}
+
+.selected {
+    /* TODO сделать нормальные стили для выбранного */
+    background: linear-gradient(96.8deg, #BF59FE -4.48%, #7844FE 54.18%, #4467E6 105.1%);
+    color: #E6E8FC;;
+}

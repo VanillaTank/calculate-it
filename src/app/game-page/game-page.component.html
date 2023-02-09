@@ -1,0 +1,20 @@
+<div class="w-full h-full relative">
+    <app-close (click)="onCloseClick()"></app-close>
+    <div class="timer">{{timerString}}</div>
+    <div class="bar">
+        <div class="bar-colored gradient" 
+        [style.width]="donePercent+'%'"></div>
+    </div>
+    <div class="content">
+        <div class="query">
+            {{query}}=<span class="answer-border relative">
+                <input maxlength="3"
+                    [(ngModel)]="userAnswer"
+                    class="answer-input" 
+                    type="number">
+            </span>
+        </div>
+        <button class="btn next-btn" (click)="onNextBtnClick()">next</button>
+    </div>
+    
+</div>

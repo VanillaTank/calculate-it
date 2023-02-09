@@ -1,0 +1,14 @@
+.buttons-wrap {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.menu-btn {
+    padding: .2rem;
+    font-size: 26px;
+}

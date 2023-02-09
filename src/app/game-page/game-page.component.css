@@ -1,0 +1,80 @@
+.timer {
+    font-size: 1.5rem;
+}
+
+.bar {
+    width: 100%;
+    height: .5rem;
+    border-radius: .25rem;
+    background-color: #E2D8FF;
+    overflow: hidden;
+}
+
+.bar-colored {
+    height: 100%;
+    max-width: 100%;
+    border-radius: .25rem;
+}
+
+.next-btn {
+    padding: 0.5rem;
+    max-width: 13rem;
+    width: 100%;
+    font-size: 1.75rem;
+    border-radius: 1rem;
+    line-height: 2rem;
+}
+
+.content {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.query {
+    font-size: 4rem;
+}
+
+.answer-input {
+    font-size: 4rem;
+    max-width: 12.5rem;
+    border: none;
+    padding: 0 1rem;
+    outline: none;
+    background-color: transparent;
+    appearance: none;
+}
+
+.answer-input[type="number"]::-webkit-outer-spin-button,
+.answer-input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.answer-input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.answer-input[type="number"]:hover,
+.answer-input[type="number"]:focus {
+    -moz-appearance: number-input;
+}
+
+.answer-input[type=number]::-webkit-inner-spin-button,
+.answer-input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.answer-border:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: #4633BE;
+    bottom: 0;
+    left: 0;
+    border-radius: 2px;
+}

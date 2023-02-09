@@ -1,0 +1,32 @@
+.content {
+    margin-top: 1.25rem;
+    border-radius: 0.5rem;
+    border: 1px solid #fff;
+}
+
+.result-item {
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+    border-bottom: 1px solid #fff;
+}
+
+.result-item:first-child {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.result-item:last-child {
+    border-bottom-color: none;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+.result-item:hover {
+    box-shadow: 0 0 10px 4px rgba(255, 255, 255, .75);
+    z-index: 2;
+}

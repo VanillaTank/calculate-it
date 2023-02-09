@@ -1,0 +1,46 @@
+.bg {
+    width: 100%;
+    height: 100vh;
+    background-color: #6E30FE;
+    background-image: url('/assets/bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    transform: translateY(4rem);
+    padding: 1rem 2rem 2rem;
+    background-color: rgba(255, 255, 255, .8);
+    border-radius: 0.5rem;
+    border: 1px solid #ffffff;
+    box-shadow: 0 0 4px 1px rgba(255, 255, 255, .44);
+}
+
+.footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+.footer-content {
+    padding: 8px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-content * {
+    font-size: 15px;
+}
+
+.year {
+    letter-spacing: -0.1rem;
+    margin-left: 0.5em;
+    display: inline-block;
+}
