@@ -9,3 +9,9 @@
 :host:hover {
     transform: scale(1.05);
 }
+
+@media (max-width:500px) {
+    :host {
+        right: 0;
+    }
+}

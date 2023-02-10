@@ -3,11 +3,15 @@
 *::before {
     margin: 0;
     padding: 0;
-    font-size: 20px;
     color: #4633BE;
     box-sizing: border-box;
     font-family: 'Sofia', cursive;
 }
+
+html {
+    font-size: 20px; 
+}
+
 
 .gradient {
     background: linear-gradient(96.8deg, #BF59FE -4.48%, #7844FE 54.18%, #4467E6 105.1%);
@@ -39,7 +43,7 @@
 }
 
 .main-title {
-    font-size: 44px;
+    font-size: 2.2rem;
     font-weight: 400;
     margin-bottom: 1rem;
     text-align: center;
@@ -65,4 +69,57 @@
 
 .relative {
     position: relative;
+}
+
+.scroll {
+    margin-top: 1.25rem;
+    padding: 0 1rem 0 0;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.scroll::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.scroll::-webkit-scrollbar-track {
+    box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    background-color: #E2D8FF;
+    border-radius: 10px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(96.8deg, #BF59FE -4.48%, #7844FE 54.18%, #4467E6 105.1%);
+}
+
+
+@media (max-width:750px) {
+    html {
+        font-size: 18px;
+        padding-bottom: 2rem;
+    }
+    .scroll {
+        max-height: 100vh;
+    }
+}
+
+@media (max-width:500px) {
+    html {
+        font-size: 16px;
+    }
+
+    .title {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width:400px) {
+    html {
+        font-size: 14px;
+    }
+    .title {
+        font-size: 1.5rem;
+    }
 }

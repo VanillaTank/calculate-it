@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { View } from '../types';
+import {ALL_QUERIES_AMOUNT} from '../config';
 
 @Component({
     selector: 'app-start-page',
@@ -8,8 +9,9 @@ import { View } from '../types';
 })
 export class StartPageComponent {
 
-    @Output()
-    menuBtnClick = new EventEmitter<View>();
+    @Output() menuBtnClick = new EventEmitter<View>();
+
+    allQuerisesAmount = ALL_QUERIES_AMOUNT;
 
     constructor() { }
 

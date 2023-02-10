@@ -9,12 +9,15 @@
         <div class="query">
             {{query}}=<span class="answer-border relative">
                 <input maxlength="3"
+                    #userInput
                     [(ngModel)]="userAnswer"
                     class="answer-input" 
                     type="number">
             </span>
         </div>
-        <button class="btn next-btn" (click)="onNextBtnClick()">next</button>
+        <button class="btn next-btn" 
+        [disabled]="userAnswer === ''"
+        (click)="onNextBtnClick()">next</button>
     </div>
     
 </div>

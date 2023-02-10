@@ -30,7 +30,7 @@ export class SelectLevelPageComponent {
         },
 
         {
-            paragraf1: 'Number from 0 to 50.',
+            paragraf1: 'Number from 0 to 30.',
             paragraf2: 'Addition, subtraction, multiplication, division.',
             button: { id: 'hard', name: 'Hard' }
         },

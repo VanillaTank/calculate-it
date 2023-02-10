@@ -1,39 +1,42 @@
 <div class="bg">
+
+    
+</div>
+<div class="wrap">
     <div class="container">
         <ng-container *ngIf="view==='start'">
             <app-start-page (menuBtnClick)="setView($event)"></app-start-page>
         </ng-container>
 
         <ng-container *ngIf="view==='select-level'">
-            <app-select-level-page 
-              (closeClick)="setView($event)"
-              (changeLevel)="setSelectedLevel($event)"
-              [selectedLevel]="selectedLevel"
-            ></app-select-level-page>
+            <app-select-level-page (closeClick)="setView($event)" (changeLevel)="setSelectedLevel($event)"
+                [selectedLevel]="selectedLevel"></app-select-level-page>
         </ng-container>
 
 
         <ng-container *ngIf="view==='last-results'">
-            <app-last-results-page
-              (closeClick)="setView($event)"
-            ></app-last-results-page>
+            <app-last-results-page (closeClick)="setView($event)"></app-last-results-page>
         </ng-container>
 
 
         <ng-container *ngIf="view==='game'">
-            <app-game-page
-              (closeClick)="setView($event)"
-              [selectedLevel]="selectedLevel"></app-game-page>
-        </ng-container> 
-       
-    </div>
+            <app-game-page (closeClick)="setView($event)" (traningEnd)="onTraningEnd($event)"
+                [selectedLevel]="selectedLevel"></app-game-page>
+        </ng-container>
 
-    <div class="footer gradient">
-        <div class="footer-content">
-            <p class="light-font-color">Brain training app “CalculateIt”</p>
-            <p class="light-font-color"> Developed by 
-                <a class="light-font-color" href="https://github.com/VanillaTank">VanillaTank</a>  <span class="light-font-color year">2023</span>
-            </p>
-        </div>
+        <ng-container *ngIf="view==='result'">
+            <app-result-page [result]="result" (menuClick)="setView($event)"></app-result-page>
+        </ng-container>
+
     </div>
 </div>
+
+<div class="footer gradient">
+    <div class="footer-content">
+        <p class="light-font-color">Brain training app “CalculateIt”</p>
+        <p class="light-font-color"> Developed by
+            <a class="light-font-color" href="https://github.com/VanillaTank">VanillaTank</a> <span
+                class="light-font-color year">2023</span>
+        </p>
+    </div>
+</div> 

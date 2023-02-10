@@ -1,1 +1,22 @@
-<p>result-page works!</p>
+<div class="w-full h-full">
+
+    <h2 class="title">Results</h2>
+
+    <div class="scroll">
+        <div class="descr">
+            Today you solved <b>{{allQuerisesAmount}}</b> examples in <b>{{convertTime(result?.time)}}</b>.
+            Of these <b>{{result?.score}}</b> examples are correct.
+        </div>
+
+        <div class="userErrorsBlock" *ngIf="result?.errors && result?.errors?.length">
+            Something went wrong here:
+            <div class="userError" *ngFor="let err of result?.errors">
+                {{err}}
+            </div>
+        </div>
+
+        <button class="btn toMenuBtn" (click)="onMenuClick()">
+            Menu
+        </button>
+    </div>
+</div>

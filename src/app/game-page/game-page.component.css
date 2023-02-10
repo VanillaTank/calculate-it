@@ -25,6 +25,11 @@
     line-height: 2rem;
 }
 
+.next-btn:disabled {
+    background: rgba(140, 122, 172, 0.6);
+    color: #4633BE;
+}
+
 .content {
     margin-top: 2rem;
     display: flex;
@@ -40,6 +45,7 @@
 .answer-input {
     font-size: 4rem;
     max-width: 12.5rem;
+    width: 100%;
     border: none;
     padding: 0 1rem;
     outline: none;
@@ -77,4 +83,25 @@
     bottom: 0;
     left: 0;
     border-radius: 2px;
+}
+
+@media (max-width:620px) {
+    .query {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media (max-width:460px) {
+    .query {
+        text-align: center;
+        font-size: 2.5rem;
+    }
+
+    .answer-input {
+        font-size: 2.5rem;
+        padding: 0 .5rem;
+        max-width: 8rem;
+    }
 }

@@ -1,13 +1,28 @@
 <div class="w-full h-full relative">
     <h2 class="title">Last results</h2>
     <app-close (click)="onCloseClick()"></app-close>
-    <!--TODO сделать нормальные стили для выбранного -->
-    <ul class="content">
-        <div *ngFor="let item of data" class="result-item light-bgc">
-            <div>{{convertTime(item.time)}}</div>
-            <div>{{item.score}}</div>
-            <div>{{item.date}}</div>
-            <div>{{item.level}}</div>
-        </div>
-    </ul>
+
+
+    <!--TODO придумать нормальные стили для выбранного -->
+    <div *ngIf="data && data.length > 0" class="scroll">
+        <ul class="content">
+            <div class="result-item light-bgc">
+                <div class="time-col">Time</div>
+                <div class="score-col">Score</div>
+                <div class="date-col">Date</div>
+                <div class="lvl-col">Level</div>
+            </div>
+
+            <div *ngFor="let item of data" class="result-item light-bgc">
+                <div class="time-col">{{convertTime(item.time)}}</div>
+                <div class="score-col">{{item.score}}/{{allQuerisesAmount}}</div>
+                <div class="date-col">{{item.date}}</div>
+                <div class="lvl-col">{{item.level | titlecase}}</div>
+            </div>
+        </ul>
+    </div>
+
+    <div *ngIf="!data || data.length === 0">
+        You need to finish at least one session to see results.
+    </div>
 </div>

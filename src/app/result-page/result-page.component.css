@@ -1,0 +1,20 @@
+.toMenuBtn {
+    display: block;
+    max-width: 20rem;
+    margin: 1.5rem auto 0;
+    width: 100%;
+    padding: 0.2rem;
+    font-size: 1.25rem;
+}
+
+.descr {
+    font-size: 1.25rem;
+}
+
+.userErrorsBlock {
+    margin-top: 0.5rem;
+}
+
+.userError+.userError {
+    margin-top: .1rem;
+}

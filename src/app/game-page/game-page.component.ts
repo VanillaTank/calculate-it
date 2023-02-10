@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Level, View } from '../types';
-
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit } from '@angular/core';
+import { Level, View, Result } from '../types';
+import {ALL_QUERIES_AMOUNT} from '../config';
+ 
 const RULES: Rules = {
     easy: {
         maxValue: 20,
@@ -21,23 +22,26 @@ const RULES: Rules = {
     templateUrl: './game-page.component.html',
     styleUrls: ['./game-page.component.css']
 })
-export class GamePageComponent implements OnInit {
+export class GamePageComponent implements OnInit, AfterViewInit {
+
+    @ViewChild('userInput') userInput!: ElementRef;
 
     @Input() selectedLevel!: Level;
 
     @Output() closeClick = new EventEmitter<View>();
+    @Output() traningEnd = new EventEmitter<Result>();
 
     timerId: any;
     timerString: string = '00:00';
 
     donePercent = 0;
-    allQuerisesAmount = 40;
+    allQuerisesAmount = ALL_QUERIES_AMOUNT;
     doneQueriesAmount = 0;
     query: string = '';
 
     userAnswer = '';
     rightAnswer = '';
-
+    userErrors: string[] = [];
 
     activeRule: Rule = RULES.middle;
     rightAnswerCount = 0;
@@ -45,15 +49,19 @@ export class GamePageComponent implements OnInit {
     private timer: number = 0;
 
 
-    constructor() {
-        // this.startTimer(); // TODO recomment it
-    }
+    constructor() {}
 
     ngOnInit(): void {
         if (this.selectedLevel) {
             this.activeRule = RULES[this.selectedLevel as keyof Rules];
         }
         this.createQuery();
+        this.startTimer(); // TODO recomment it
+    }
+
+
+    ngAfterViewInit() {
+        this.userInput?.nativeElement.focus();
     }
 
     startTimer() {
@@ -89,9 +97,12 @@ export class GamePageComponent implements OnInit {
 
             if (this.userAnswer == this.rightAnswer) {
                 ++this.rightAnswerCount;
+            } else {
+                this.userErrors.push(`${this.query}=${this.userAnswer}`);
             }
             this.userAnswer = '';
             this.createQuery();
+            this.userInput?.nativeElement.focus();
             return;
         }
 
@@ -101,8 +112,24 @@ export class GamePageComponent implements OnInit {
         this.doneQueriesAmount = 0;
         this.setDonePercent();
 
-        // передать р-т в result через родителя
-        // this.closeClick.emit('start');
+        this.traningEnd.emit({
+            time: this.timer,
+            score: this.rightAnswerCount,
+            date: this.getDateSting(),
+            level: this.selectedLevel,
+            errors: this.userErrors,
+        });
+        this.closeClick.emit('result');
+        this.rightAnswerCount = 0;
+    }
+
+    private getDateSting(): string {
+        const date = new Date();
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear().toString().slice(2);
+        const time = `${date.getHours()}:${date.getMinutes()}`;
+        return `${day}/${month}/${year} ${time}`;
     }
 
     createQuery() {
@@ -114,7 +141,8 @@ export class GamePageComponent implements OnInit {
             let b = Math.floor(Math.random() * this.activeRule.maxValue);
             this.rightAnswer = (a + b).toString();
             this.query = `${a}+${b}`
-        } else if (randomSign === '-') {
+        } 
+        else if (randomSign === '-') {
             let a = Math.floor(Math.random() * this.activeRule.maxValue);
             let b = Math.floor(Math.random() * this.activeRule.maxValue);
             while (a < b) {
@@ -123,15 +151,21 @@ export class GamePageComponent implements OnInit {
             }
             this.rightAnswer = (a - b).toString();
             this.query = `${a}-${b}`
-        } else if (randomSign === '*') {
-
-        } else {
-
+        } 
+        else if (randomSign === '*') {
+            let a = Math.floor(Math.random() * this.activeRule.maxValue/2);
+            let b = Math.floor(Math.random() * this.activeRule.maxValue/2);
+            this.rightAnswer = (a * b).toString();
+            this.query = `${a} * ${b}`
+        } 
+        else {
+            // c : a = b
+            let a = Math.ceil(Math.random() * this.activeRule.maxValue/2);
+            let b = Math.floor(Math.random() * this.activeRule.maxValue/2);
+            let c = a * b;
+            this.rightAnswer = (b).toString();
+            this.query = `${c} : ${a}`
         }
-    }
-
-    inputHandler($event: any) {
-        // TODO обработка ввода. Принимаем только цифры
     }
 }
 

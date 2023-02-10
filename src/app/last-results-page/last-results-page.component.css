@@ -1,15 +1,18 @@
 .content {
-    margin-top: 1.25rem;
     border-radius: 0.5rem;
     border: 1px solid #fff;
+    min-width: 350px;
+    width: 100%;
+}
+
+.scroll{
+    width: 100%;
+    overflow-x: auto;
 }
 
 .result-item {
-    padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
     position: relative;
     z-index: 1;
     border-bottom: 1px solid #fff;
@@ -20,13 +23,60 @@
     border-top-right-radius: 0.5rem;
 }
 
+.result-item:first-child div{
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+}
+
+.result-item div {
+    text-align: center;
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+}
+
 .result-item:last-child {
-    border-bottom-color: none;
+    border: none;
     border-bottom-left-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
 }
 
-.result-item:hover {
+.result-item:not(:first-child):hover {
     box-shadow: 0 0 10px 4px rgba(255, 255, 255, .75);
     z-index: 2;
+}
+
+.result-item div:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, .45);
+}
+
+.time-col {
+ width: 20%;
+}
+
+.score-col {
+    width: 20%;
+}
+
+.date-col {
+    width: 40%;
+}
+
+.lvl-col {
+    width: 20%;
+}
+
+
+@media (max-width:620px) {
+    .result-item:first-child div{
+        font-size: 1rem;
+    }
+    
+    .result-item div {
+        font-size: .75rem;
+    }
+
+    .scroll {
+        padding-bottom: .5rem;
+        max-width: 500px;
+    }
 }

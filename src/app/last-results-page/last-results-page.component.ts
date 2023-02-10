@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { View } from '../types';
+import { View, Result } from '../types';
+import { ALL_QUERIES_AMOUNT, LAST_RESULT_KEY } from '../config';
 
 @Component({
     selector: 'app-last-results-page',
@@ -10,32 +11,24 @@ export class LastResultsPageComponent {
 
     @Output() closeClick = new EventEmitter<View>();
 
-    // delete it after check
-    data = [
-        {time: 40, score: '30/30', date: '02/02/23  11:48', level: 'easy'},
-        {time: 42, score: '30/30', date: '02/02/23  11:48', level: 'hard'},
-        {time: 49, score: '28/30', date: '02/02/23  11:48', level: 'middle'},
-        {time: 39, score: '27/30', date: '02/02/23  11:48', level: 'easy'},
-        {time: 41, score: '30/30', date: '02/02/23  11:48', level: 'easy'},
-        {time: 60, score: '29/30', date: '02/02/23  11:48', level: 'hard'},
-        {time: 61, score: '30/30', date: '02/02/23  11:48', level: 'hard'},
-        {time: 74, score: '25/30', date: '02/02/23  11:48', level: 'easy'},
-    ]
+    allQuerisesAmount = ALL_QUERIES_AMOUNT;
+    data: Result[];
 
-    constructor() { }
+    constructor() {
+        this.data = JSON.parse(localStorage.getItem(LAST_RESULT_KEY) as string) || [];
+    }
 
     onCloseClick() {
         this.closeClick.emit('start');
     }
 
     convertTime(time: number): string {
-        if( time < 60) {
+        if (time < 60) {
             return `${time}s`;
         } else {
-            const min = Math.trunc(time / 60); 
+            const min = Math.trunc(time / 60);
             const sec = time % 60;
-            return `${min}min${sec > 0 ? ` ${sec}sec`: ''}`;
+            return `${min}min${sec > 0 ? ` ${sec}sec` : ''}`;
         }
-       
     }
 }
