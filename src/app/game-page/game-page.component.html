@@ -11,6 +11,7 @@
                 <input maxlength="3"
                     #userInput
                     [(ngModel)]="userAnswer"
+                    (keyup.enter)="onNextBtnClick()"
                     class="answer-input" 
                     type="number">
             </span>
