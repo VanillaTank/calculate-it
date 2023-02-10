@@ -56,7 +56,7 @@ export class GamePageComponent implements OnInit, AfterViewInit {
             this.activeRule = RULES[this.selectedLevel as keyof Rules];
         }
         this.createQuery();
-        this.startTimer(); // TODO recomment it
+        this.startTimer();
     }
 
 
