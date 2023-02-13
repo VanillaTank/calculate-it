@@ -116,9 +116,6 @@ html {
 }
 
 @media (max-width:400px) {
-    html {
-        font-size: 14px;
-    }
     .title {
         font-size: 1.5rem;
     }

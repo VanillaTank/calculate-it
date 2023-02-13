@@ -91,6 +91,11 @@ export class GamePageComponent implements OnInit, AfterViewInit {
     }
 
     onNextBtnClick() {
+        console.log(this.userAnswer);
+        
+        if(!this.userAnswer) {
+            return;
+        }
         if (this.donePercent < 100) {
             ++this.doneQueriesAmount;
             this.setDonePercent();
@@ -128,8 +133,9 @@ export class GamePageComponent implements OnInit, AfterViewInit {
         const day = date.getDate();
         const month = date.getMonth() + 1;
         const year = date.getFullYear().toString().slice(2);
-        const time = `${date.getHours()}:${date.getMinutes()}`;
-        return `${day}/${month}/${year} ${time}`;
+        const hours = date.getHours() > 9 ? date.getHours() : '0'+date.getHours();
+        const min = date.getMinutes() > 9 ? date.getMinutes() : '0'+date.getMinutes();
+        return `${day}/${month}/${year} ${hours}:${min}`;
     }
 
     createQuery() {
