@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { Level, View, Result } from '../types';
 import {ALL_QUERIES_AMOUNT} from '../config';
  
@@ -22,7 +22,7 @@ const RULES: Rules = {
     templateUrl: './game-page.component.html',
     styleUrls: ['./game-page.component.css']
 })
-export class GamePageComponent implements OnInit, AfterViewInit {
+export class GamePageComponent implements OnInit, AfterViewInit, OnDestroy {
 
     @ViewChild('userInput') userInput!: ElementRef;
 
@@ -91,11 +91,10 @@ export class GamePageComponent implements OnInit, AfterViewInit {
     }
 
     onNextBtnClick() {
-        console.log(this.userAnswer);
-        
-        if(!this.userAnswer) {
+        if(this.userAnswer === '' || this.userAnswer === null || this.userAnswer === undefined) {
             return;
         }
+
         if (this.donePercent < 100) {
             ++this.doneQueriesAmount;
             this.setDonePercent();
@@ -172,6 +171,13 @@ export class GamePageComponent implements OnInit, AfterViewInit {
             this.rightAnswer = (b).toString();
             this.query = `${c} : ${a}`
         }
+    }
+    ngOnDestroy() {
+        if (this.timerId) {
+            clearInterval(this.timerId);
+        }
+        this.query = '';
+        this.doneQueriesAmount = 0;
     }
 }
 

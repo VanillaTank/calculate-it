@@ -104,4 +104,8 @@
         padding: 0 .5rem;
         max-width: 8rem;
     }
+
+    .next-btn {
+        line-height: 1.75rem;
+     }
 }

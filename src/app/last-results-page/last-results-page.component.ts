@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { View, Result } from '../types';
-import { ALL_QUERIES_AMOUNT, LAST_RESULT_KEY } from '../config';
+import { LAST_RESULT_KEY } from '../config';
 
 @Component({
     selector: 'app-last-results-page',
@@ -11,7 +11,6 @@ export class LastResultsPageComponent {
 
     @Output() closeClick = new EventEmitter<View>();
 
-    allQuerisesAmount = ALL_QUERIES_AMOUNT;
     data: Result[];
 
     constructor() {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { View, Level, Result } from './types';
-import {LAST_RESULT_KEY, LEVEL_KEY} from './config';
+import {LAST_RESULT_KEY, LEVEL_KEY, ALL_QUERIES_AMOUNT} from './config';
 
 @Component({
     selector: 'app-root',
@@ -11,7 +11,7 @@ export class AppComponent {
     title = 'calculate It';
     result: Result | undefined;
     view: View;
-
+    allQuerisesAmount = ALL_QUERIES_AMOUNT;
     selectedLevel!: Level;
 
     constructor() {
@@ -45,7 +45,7 @@ export class AppComponent {
         const res: Result[] | [] = JSON.parse(localStorage.getItem(LAST_RESULT_KEY) as string) || [];
         const resultToSave: Result = {
             time: this.result.time,
-            score: this.result.score,
+            score: `${this.result.score}/${this.allQuerisesAmount}`,
             date: this.result.date,
             level: this.result.level,
         }

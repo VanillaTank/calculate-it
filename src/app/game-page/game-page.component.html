@@ -17,7 +17,7 @@
             </span>
         </div>
         <button class="btn next-btn" 
-        [disabled]="userAnswer === ''"
+        [disabled]="userAnswer === '' || userAnswer === null || this.userAnswer === undefined"
         (click)="onNextBtnClick()">next</button>
     </div>
     
