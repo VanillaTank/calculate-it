@@ -90,8 +90,16 @@ export class GamePageComponent implements OnInit, AfterViewInit, OnDestroy {
         this.donePercent = 100 * this.doneQueriesAmount / this.allQuerisesAmount;
     }
 
+    isEmptyValue() {
+        if(this.userAnswer === null || this.userAnswer === undefined || this.userAnswer.toString().trim() === '') {
+            return true;
+        }
+        return false;
+    }
+
     onNextBtnClick() {
-        if(this.userAnswer === '' || this.userAnswer === null || this.userAnswer === undefined) {
+        
+        if(this.isEmptyValue()) {
             return;
         }
 

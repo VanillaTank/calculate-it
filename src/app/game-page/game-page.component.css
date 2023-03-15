@@ -28,6 +28,7 @@
 .next-btn:disabled {
     background: rgba(140, 122, 172, 0.6);
     color: #4633BE;
+    cursor: auto;
 }
 
 .content {

@@ -18,7 +18,7 @@ import { FormsModule } from '@angular/forms';
     ResultPageComponent,
     LastResultsPageComponent,
     SelectLevelPageComponent,
-    CloseComponent
+    CloseComponent,
   ],
   imports: [
     BrowserModule,
