@@ -2,7 +2,7 @@
     <app-close (click)="onCloseClick()"></app-close>
     <div class="timer">{{timerString}}</div>
     <div class="bar">
-        <div class="bar-colored gradient" 
+        <div class="bar-colored gradient"
         [style.width]="donePercent+'%'"></div>
     </div>
     <div class="content">
@@ -12,13 +12,14 @@
                     #userInput
                     [(ngModel)]="userAnswer"
                     (keyup.enter)="onNextBtnClick()"
-                    class="answer-input" 
+                       (keyup)="showKey($event)"
+                    class="answer-input"
                     type="number">
             </span>
         </div>
-        <button class="btn next-btn" 
+        <button class="btn next-btn"
         [disabled]="isEmptyValue()"
         (click)="onNextBtnClick()">next</button>
     </div>
-    
+
 </div>

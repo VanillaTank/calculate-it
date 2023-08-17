@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { Level, View, Result } from '../types';
 import {ALL_QUERIES_AMOUNT} from '../config';
- 
+
 const RULES: Rules = {
     easy: {
         maxValue: 20,
@@ -97,8 +97,12 @@ export class GamePageComponent implements OnInit, AfterViewInit, OnDestroy {
         return false;
     }
 
+    showKey (event: KeyboardEvent) {
+      alert(JSON.stringify({keyCode: event.keyCode, key: event.key, which: event.which}, null, 2))
+    }
+
     onNextBtnClick() {
-        
+
         if(this.isEmptyValue()) {
             return;
         }
@@ -154,7 +158,7 @@ export class GamePageComponent implements OnInit, AfterViewInit, OnDestroy {
             let b = Math.floor(Math.random() * this.activeRule.maxValue);
             this.rightAnswer = (a + b).toString();
             this.query = `${a}+${b}`
-        } 
+        }
         else if (randomSign === '-') {
             let a = Math.floor(Math.random() * this.activeRule.maxValue);
             let b = Math.floor(Math.random() * this.activeRule.maxValue);
@@ -164,13 +168,13 @@ export class GamePageComponent implements OnInit, AfterViewInit, OnDestroy {
             }
             this.rightAnswer = (a - b).toString();
             this.query = `${a}-${b}`
-        } 
+        }
         else if (randomSign === '*') {
             let a = Math.floor(Math.random() * this.activeRule.maxValue/2);
             let b = Math.floor(Math.random() * this.activeRule.maxValue/2);
             this.rightAnswer = (a * b).toString();
             this.query = `${a} * ${b}`
-        } 
+        }
         else {
             // c : a = b
             let a = Math.ceil(Math.random() * this.activeRule.maxValue/2);

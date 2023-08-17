@@ -4,8 +4,8 @@
     <!--TODO сделать нормальные стили для выбранного -->
     <div class="content">
         <div *ngFor="let item of data">
-            <p>{{item.paragraf1}}</p>
-            <p>{{item.paragraf2}}</p>
+            <p class="paragraf">{{item.paragraf1}}</p>
+            <p class="paragraf">{{item.paragraf2}}</p>
             <button class="level-btn btn" (click)="onLevelBtnClick(item.button.id)"
                 [class.selected]="selectedLevel === item.button.id">{{item.button.name}}</button>
         </div>
