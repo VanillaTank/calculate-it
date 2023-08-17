@@ -97,10 +97,6 @@ export class GamePageComponent implements OnInit, AfterViewInit, OnDestroy {
         return false;
     }
 
-    showKey (event: KeyboardEvent) {
-      alert(JSON.stringify({keyCode: event.keyCode, key: event.key, which: event.which}, null, 2))
-    }
-
     onNextBtnClick() {
 
         if(this.isEmptyValue()) {
